@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
+using RazorPagesCommands.Commands;
 using RazorPagesCommands.Data;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace RazorPagesCommands.Pages.People
 {
-    public class IndexModel : PageModel
+    public class IndexModel : CommandPageModel
     {
         private readonly ApplicationDbContext _db;
 
@@ -29,7 +29,7 @@ namespace RazorPagesCommands.Pages.People
             People = await _db.People.AsNoTracking().ToListAsync();
         }
 
-        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        public async Task<IActionResult> OnDeletePerson(int id)
         {
             var person = await _db.People.FindAsync(id);
 

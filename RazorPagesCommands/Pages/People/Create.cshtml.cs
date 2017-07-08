@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using RazorPagesCommands.Commands;
 using RazorPagesCommands.Data;
 using System.Threading.Tasks;
 
 namespace RazorPagesCommands.Pages.People
 {
-    public class CreateModel : PageModel
+    public class CreateModel : CommandPageModel
     {
         private readonly ApplicationDbContext _db;
 
@@ -21,7 +22,7 @@ namespace RazorPagesCommands.Pages.People
         [TempData]
         public string Message { get; set; }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnCreatePerson()
         {
             if (!ModelState.IsValid)
             {

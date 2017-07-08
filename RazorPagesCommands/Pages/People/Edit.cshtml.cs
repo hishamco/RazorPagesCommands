@@ -2,12 +2,13 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
+using RazorPagesCommands.Commands;
 using RazorPagesCommands.Data;
 using System.Threading.Tasks;
 
 namespace RazorPagesCommands.Pages.People
 {
-    public class EditModel : PageModel
+    public class EditModel : CommandPageModel
     {
         private readonly ApplicationDbContext _db;
 
@@ -35,7 +36,7 @@ namespace RazorPagesCommands.Pages.People
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnDeletePerson()
         {
             if (!ModelState.IsValid)
             {

@@ -13,7 +13,7 @@ namespace RazorPagesCommands.Commands
     {
         public Task<IActionResult> OnPostAsync()
         {
-            var commandName = HttpContext.Request.Form[CommandTagHelper.CommandNameParam];
+            var commandName = RouteData.Values["command"].ToString();
             var commandArgs = Request.Query.ToDictionary(x => x.Key, x => x.Value.ToString(),
                 StringComparer.OrdinalIgnoreCase);
 
